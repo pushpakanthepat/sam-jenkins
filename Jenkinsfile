@@ -31,13 +31,4 @@ pipeline {
             }
         }
     }
-
-    post {
-        success {
-            // Any post-success actions
-        }
-        failure {
-            // Any post-failure actions
-        }
-    }
 }
