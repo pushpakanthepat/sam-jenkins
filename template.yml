@@ -189,7 +189,7 @@ Resources:
   CreateBookPreTraffic:
     Type: AWS::Serverless::Function
     Properties:
-      FunctionName: !Sub 'CodeDeployHook_${Stage}-books-create-pre-traffic-check'
+      FunctionName: !Sub '${Stage}-books-create-pre-traffic-check'
       CodeUri: ./src/books/create-pre-traffic/dist/
       Handler: index.handler
       Environment:
