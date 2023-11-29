@@ -18,9 +18,7 @@ pipeline {
         stage('Package Application') {
             steps {
                 script {
-                    withCredentials([[$class: 'AmazonWebServicesCredentialsBinding', credentialsId: AWS_CREDENTIALS_ID, accessKeyVariable: 'AWS_ACCESS_KEY_ID', secretKeyVariable: 'AWS_SECRET_ACCESS_KEY']]) {
                         sh "sam package --s3-bucket ${params.ARTIFACTS_BUCKET} --s3-prefix ${params.ARTIFACTS_PREFIX} --output-template-file out.yml"
-                    }
                 }
             }
         }
@@ -28,9 +26,7 @@ pipeline {
         stage('Deploy') {
             steps {
                 script {
-                    withCredentials([[$class: 'AmazonWebServicesCredentialsBinding', credentialsId: AWS_CREDENTIALS_ID, accessKeyVariable: 'AWS_ACCESS_KEY_ID', secretKeyVariable: 'AWS_SECRET_ACCESS_KEY']]) {
                         sh "sam deploy --template-file out.yml --stack-name $STACK_NAME --parameter-overrides ParameterKey=Environment,ParameterValue=${params.DEPLOY_STAGE} --capabilities CAPABILITY_IAM"
-                    }
                 }
             }
         }
