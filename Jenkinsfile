@@ -8,9 +8,10 @@ pipeline {
     }
 
     environment {
-        AWS_DEFAULT_REGION = 'your-aws-region'
+        AWS_DEFAULT_REGION = 'us-east-1'
         STACK_NAME         = "my-stack-${params.DEPLOY_STAGE}"
-        AWS_CREDENTIALS_ID = 'your-aws-credentials-id'
+        AWS_ACCESS_KEY_ID = credentials('AWS_ACCESS_KEY_ID')
+        AWS_SECRET_ACCESS_KEY = credentials('AWS_SECRET_ACCESS_KEY')
     }
 
     stages {
