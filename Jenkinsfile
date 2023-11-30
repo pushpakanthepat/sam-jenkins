@@ -19,6 +19,16 @@ pipeline {
     }
 
     stages {
+        stage('Unit Test') {
+            steps {
+                script {
+                        sh "cd src/books/tests"
+                        sh "npm ci"
+                        sh "npm test"
+                }
+            }
+        }
+        
         stage('Package Application') {
             steps {
                 script {
