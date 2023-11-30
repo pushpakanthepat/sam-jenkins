@@ -24,8 +24,8 @@ pipeline {
                 script {
                     sh "npm i -g recursive-install"
                     sh "npm-recursive-install --rootDir=src"
-                    sh "cd src/books/create"
-                    sh "npm test"
+                    sh "cd src/books/create \
+                    npm test"
                     sh "../get-all"
                     sh "npm test"
                 }
