@@ -31,7 +31,7 @@ pipeline {
         stage('Deploy') {
             steps {
                 script {
-                        sh "sam deploy --template-file template.yml --stack-name $STACK_NAME --parameter-overrides ParameterKey=Environment,ParameterValue=${params.DEPLOY_STAGE} --capabilities CAPABILITY_IAM"
+                        sh "sam deploy --template-file template.yml --stack-name $STACK_NAME --parameter-overrides ParameterKey=Stage,ParameterValue=${params.DEPLOY_STAGE} --capabilities CAPABILITY_IAM"
                 }
             }
         }
