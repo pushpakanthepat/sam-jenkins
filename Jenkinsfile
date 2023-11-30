@@ -22,9 +22,8 @@ pipeline {
         stage('Unit Test') {
             steps {
                 script {
-                        sh "cd src/books/tests"
-                        sh "npm ci"
-                        sh "npm test"
+                        sh "npm ci src/books/tests"
+                        sh "npm test src/books/tests"
                 }
             }
         }
