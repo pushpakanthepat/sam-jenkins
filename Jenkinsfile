@@ -26,7 +26,7 @@ pipeline {
                         // Run npm ci to install dependencies from package-lock.json
                         sh 'npm ci'
                         // Run npm install to ensure all dependencies are installed
-                        sh 'npm install'
+                        sh 'npm test'
                     }
                 }
             }
