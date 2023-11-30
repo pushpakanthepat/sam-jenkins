@@ -1,6 +1,10 @@
 pipeline {
     agent any
 
+    tools{
+        nodejs 'node16'
+    }
+
     parameters {
         choice(name: 'DEPLOY_STAGE', choices: ['staging', 'production'], description: 'Select the deployment stage')
         string(name: 'ARTIFACTS_BUCKET', defaultValue: 'my-artifacts-bucket', description: 'Enter the S3 bucket for artifacts')
