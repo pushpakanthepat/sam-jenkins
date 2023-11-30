@@ -22,12 +22,12 @@ pipeline {
         stage('Unit Test') {
             steps {
                 script {
-                    dir('src/books/tests') {
-                        // Run npm ci to install dependencies from package-lock.json
-                        sh 'npm ci'
-                        // Run npm install to ensure all dependencies are installed
-                        sh 'npm test'
-                    }
+                    sh "npm i -g recursive-install"
+                    sh "npm-recursive-install --rootDir=src"
+                    sh "cd src/books/create"
+                    sh "npm test"
+                    sh "../get-all"
+                    sh "npm test"
                 }
             }
         }
