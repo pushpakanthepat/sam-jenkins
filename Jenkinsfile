@@ -22,8 +22,12 @@ pipeline {
         stage('Unit Test') {
             steps {
                 script {
-                        sh "npm ci src/books/tests"
-                        sh "npm test src/books/tests"
+                    dir('src/books/tests') {
+                        // Run npm ci to install dependencies from package-lock.json
+                        sh 'npm ci'
+                        // Run npm install to ensure all dependencies are installed
+                        sh 'npm install'
+                    }
                 }
             }
         }
