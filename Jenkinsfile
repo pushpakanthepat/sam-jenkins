@@ -5,17 +5,13 @@ pipeline {
         nodejs 'node'
     }
 
-    parameters {
-        choice(name: 'DEPLOY_STAGE', choices: ['staging', 'production'], description: 'Select the deployment stage')
-        string(name: 'ARTIFACTS_BUCKET', defaultValue: 'my-artifacts-bucket', description: 'Enter the S3 bucket for artifacts')
-        string(name: 'ARTIFACTS_PREFIX', defaultValue: 'my-prefix', description: 'Enter the S3 prefix for artifacts')
-    }
-
-    environment {
-        AWS_DEFAULT_REGION = 'us-east-1'
-        STACK_NAME         = "book-app-${params.DEPLOY_STAGE}"
-        AWS_ACCESS_KEY_ID = credentials('AWS_ACCESS_KEY_ID')
-        AWS_SECRET_ACCESS_KEY = credentials('AWS_SECRET_ACCESS_KEY')
+   environment {
+        AWS_DEFAULT_REGION = 'ap-southeast-2'
+        STACK_NAME         = "uatr-jenkins-test"
+        AWS_ACCESS_KEY_ID = credentials('AWS_ACCESS_KEY_JENKINS')
+        AWS_SECRET_ACCESS_KEY = credentials('AWS_SECRET_ACCESS_KEY_JENKINS')
+        ARTIFACTS_BUCKET = credentials('S3_BUCKET')
+        ARTIFACTS_PREFIX = 'uatr-jenkins-test'
     }
 
     stages {
